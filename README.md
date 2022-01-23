@@ -1,4 +1,9 @@
 # CV
 
-Install:
-sudo apt update && sudo apt install texlive-full
+## Development enviroment
+
+```sh
+./scripts/sdk/bootstrap.sh
+
+# Install VSCode Latex workshop extension
+```
