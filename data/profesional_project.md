@@ -1,10 +1,16 @@
 # Projects
 
+TODO: RUN a spel check!
+
 List of project, to be used for auto generating LaTex files.
 
 ## Vinnter
 
-### 
+### IoT gateway
+Title: IoT gateway for different welding machines
+For: Esab, contractor via Vinnter AB
+Technology: Micro-services, Go, Python, C++, gRPC
+Text: Was part of a team responsible for managing and developing of a gateway that supported several differnt welding system setups. The gateway's main task was to shuffel data between the cloud and the welding system, as well as UI for the operators. I worked and created serval application and serivces. Most of the service I worked on were written in Go.
 
 ### BLE Sensors
 Title: BLE wireless termostat system
