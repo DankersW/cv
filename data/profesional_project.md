@@ -6,11 +6,11 @@ List of project, to be used for auto generating LaTex files.
 
 ## Vinnter
 
-### IoT gateway
-Title: IoT gateway for different welding machines
+### Weldingsystem Gateway
+Title: Gateway for different welding machines
 For: Esab, contractor via Vinnter AB
 Technology: Micro-services, Go, Python, C++, gRPC
-Text: Was part of a team responsible for managing and developing of a gateway that supported several differnt welding system setups. The gateway's main task was to shuffel data between the cloud and the welding system, as well as UI for the operators. I worked and created serval application and serivces. Most of the service I worked on were written in Go.
+Text: Maintaining and developing of linux based gateway application with a microservices architecture running on a Single-board computer, the micro-services communicate using gRPC. Languages of the services range from Go, C++, Python, and JS (Vue). The gateway is part of a bigger system and communicates with other nodes in the system via HTTP. I created and maintained serval application and serivces, all the services I created were written in Go. Our architecture supported different (gateway) platforms/hardware aswell as different welding-systems and configurations.
 
 ### BLE Sensors
 Title: BLE wireless termostat system
