@@ -17,11 +17,11 @@ Title:
 For:
 Technology: 
 
-### BLE Sensors
+### BLE Sensors Firmware
 Title: BLE wireless termostat system
 For: In-house project, Vinnter AB
 Technology: BLE, Wireless, HIL, C, Embedded, NRF52840, Python, CI/CD
-Text: Worked on an inhouse project where we build a wireless termostat system for floor heating. The product was developt 100% inhouse ranging from electronics and platics, to software. I joined the project in a later stage. My main contributions to the project were that I developt a HIL and SIL (Hardware and Software In The Loop) system to run big system test on multi targets together as well as preformace tests on single targets. Some custom hardware was also developt to achieve this goal. The tests where automatically triggered via CI/CD pipelines.
+Text: Worked on an inhouse project where we build a wireless termostat system for floor heating. The product was developt 100% inhouse ranging from electronics and platics, to software. I joined the project in a later stage. My main contributions to the project was were that I developt a HIL and SIL (Hardware and Software In The Loop) system to run big system test on multible targets (communicating wirelessly with eachother) as well as preformace tests on single targets. Some custom hardware was also developt to achieve this goal. The tests where automatically triggered via CI/CD pipelines.
 
 ## Volvo
 
