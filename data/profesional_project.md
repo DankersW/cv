@@ -13,9 +13,10 @@ Technology: Micro-services, Go, Python, C++, gRPC
 Text: Maintaining and developing of linux based gateway application with a microservices architecture running on a Single-board computer, the micro-services communicate using gRPC. Languages of the services range from Go, C++, Python, and JS (Vue). The gateway is part of a bigger system and communicates with other nodes in the system via HTTP. I created and maintained serval application and serivces, all the services I created were written in Go. Our architecture supported different (gateway) platforms/hardware aswell as different welding-systems and configurations.
 
 ### Presence detection radar
-Title: 
-For:
-Technology: 
+Title: PoC precence and fall detection using radar
+For: Esab, contractor via Vinnter AB
+Technology: AWS, Python, Data-visualization, REST
+Text: Small PoC project to verify if a radar system could be used to track the usuage of a welding booth. The radar system and detection algorithmes was provided by a supplier. My task included creating webhooks for our clouds to communicate as well as an monitoring tool to visualize the received data.
 
 ### BLE Sensors Firmware
 Title: BLE wireless termostat system
