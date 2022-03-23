@@ -1,0 +1,246 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document properties and packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,12pt,final]{memoir}
+
+% misc
+\renewcommand{\familydefault}{bch}	% font
+\pagestyle{empty}					% no pagenumbering
+\setlength{\parindent}{0pt}			% no paragraph indentation
+
+
+% required packages (add your own)
+\usepackage{flowfram} % column layout
+\usepackage[top=1cm,left=1cm,right=1cm,bottom=1cm]{geometry}% margins
+\usepackage{graphicx}										% figures
+\usepackage{url}											% URLs
+\usepackage[usenames,dvipsnames]{xcolor}					% color
+\usepackage{multicol}										% columns env.
+	\setlength{\multicolsep}{0pt}
+\usepackage{paralist}										% compact lists
+\usepackage{tikz}
+
+\usepackage{tcolorbox}                                      % draw box
+\usepackage{calc}
+
+
+% bar drawing
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Create column layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% define length commands
+\setlength{\vcolumnsep}{\baselineskip}
+\setlength{\columnsep}{\vcolumnsep}
+
+% left frame
+\newflowframe{0.26\textwidth}{\textheight}{0pt}{0pt}[left]
+	\newlength{\LeftMainSep}
+	\setlength{\LeftMainSep}{0.26\textwidth}
+	\addtolength{\LeftMainSep}{1\columnsep}
+ 
+% small static frame for the vertical line
+\newstaticframe{1.5pt}{\textheight}{\LeftMainSep}{0pt}
+ 
+% content of the static frame
+\begin{staticcontents}{1}
+\hfill
+\tikz{%
+	%\draw[loosely dotted,color=RoyalBlue,line width=1.5pt,yshift=0]
+	\draw[color=RoyalBlue,line width=1.5pt,yshift=0]
+	(0,0) -- (0,\textheight);}%
+\hfill\mbox{}
+\end{staticcontents}
+ 
+% right frame
+\addtolength{\LeftMainSep}{1.5pt}
+\addtolength{\LeftMainSep}{1\columnsep}
+\newflowframe{0.64\textwidth}{\textheight}{\LeftMainSep}{0pt}[main01]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% define macros (for convience)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{white}{RGB}{255,255,255}
+\definecolor{maingray}{HTML}{B9B9B9}
+\definecolor{blueline}{HTML}{1a81c6}
+
+\newcommand{\Sep}{\vspace{1.5em}}
+\newcommand{\SmallSep}{\vspace{0.5em}}
+
+\newenvironment{AboutMe}
+	%{\ignorespaces\textbf{\color{RoyalBlue} About me}}
+	{\ignorespaces\textbf{\color{NavyBlue} About me}}
+	{\Sep\ignorespacesafterend}
+	
+\newcommand{\CVSection}[1]
+	{\Large\textbf{#1}\par
+	\SmallSep\normalsize\normalfont}
+
+\newcommand{\CVItem}[1]
+	%{\textbf{\color{RoyalBlue} #1}}
+	{\textbf{\color{NavyBlue} #1}}
+
+\newcommand\skills[1]{ 
+    \begin{tikzpicture}
+        \foreach [count=\i] \x/\y in {#1}{
+            \draw[fill=maingray,maingray] (0,\i) rectangle (5,\i+0.4);
+            \draw[fill=white,blueline](0,\i) rectangle (\y,\i+0.4);
+            \node[above right] at (0,\i+0.4) {\x};
+        }
+    \end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+% Left frame
+%%%%%%%%%%%%%%%%%%%%
+%
+% Picture
+\begin{figure}
+	\hfill
+	\includegraphics[width=1\columnwidth]{img/profile_pic.jpg}
+	\vspace{-4.5cm}
+\end{figure}
+
+\begin{flushright}\small
+	Wouter Dankers \\
+	Göteborg, Sweden \\
+	+46 (0)720 130 370 \\
+	\url{wouter.dankers@skynet.be}  \\
+	\url{github.com/DankersW} \\
+	\Sep
+	
+	% Languages
+	{\Large\textbf{Languages}}
+	\skills{{Dutch/5}} \\
+    \skills{{English/5}} \\
+    \skills{{French/1}} \\
+    \skills{{Swedish/2.5}} \\
+	\Sep
+	\Sep
+	
+	% Interests
+    {\Large\textbf{Interests}}\\
+	\SmallSep
+    \framebox(65,15){Outdoor life} \framebox(57,15){Ice-hockey} \framebox(75,15){Skateboarding} \framebox(40,15){Surfing} \framebox(35,15){Skiing} \framebox(25,15){IoT} \framebox(60,15){Automation} \framebox(35,15){Nature} \framebox(45,15){Robotics} \framebox(60,15){Smart-cities} \\
+    \Sep
+
+    
+\end{flushright}\normalsize
+\framebreak
+
+% Right frame
+%%%%%%%%%%%%%%%%%%%%
+\Huge\bfseries {\color{RoyalBlue} Wouter Dankers} \\
+\Large\bfseries  System Engineer \\
+
+\normalsize\normalfont
+
+% About me
+\begin{AboutMe}
+I am an experienced and versatile software engineer that takes great pride in writing well functioning and clean code that scales and ages well. I am organized, open minded, and efficient, with attention to detail and I have excellent people skills.
+
+\end{AboutMe}
+
+% Experience
+\CVSection{Experience}
+\CVItem{Jun 2018 - present, Volvo Group} \hfill Göteborg, Sweden \\
+\emph{System Engineer}
+\SmallSep
+
+\CVItem{Feb 2016 - Jun 2016, Memory x design} \hfill Beijing, China \\
+\emph{Internship}
+\Sep
+
+\CVSection{Tech stack}
+\begin{multicols}{4}
+\begin{compactitem}[\color{RoyalBlue}$\circ$]
+	\item C++ 
+	\item Python 
+	\item Bash
+	\item C-ITS
+	\item Networking
+	\item Git
+	\item Embedded-Systems
+	\item GCP
+	\item Agile 
+	\item Docker
+	\item Jenkins
+	\item Automation
+	\item IoT
+	\item Linux
+	\item micro-services
+	\item Wireless communication
+\end{compactitem}
+\end{multicols}
+\Sep
+
+% Education
+\CVSection{Education}
+\CVItem{2016 - 2018, Halmstad University} \hfill Halmstad, Sweden \\
+MSc. Embedded and Intelligent systems
+\SmallSep
+
+\CVItem{2013 - 2016, Thomas More Hogeschool} \hfill Geel, Belgium \\
+BSc. ICT and Telecommunication
+\Sep
+
+% Personal projects
+\CVSection{Hobby projects}
+\CVItem{Home automation} \\
+\emph{Topics: Google cloud platform, ESP32, IoT, Python, Monitoring} \\
+Self developed home automation kit that runs on a local server as well as in the cloud. The cloud service is mostly used for natural language processing (voice commands using Google Assistant) and an integration with the Sonos ecosystem. The home server serves as a device gateway, storage facility, and as a monitoring unit in the form of a web-server. 
+\SmallSep
+
+\CVItem{DIY drone} \\
+\emph{Topics: Robotics, Wireless communication, Python, Gyroscope} \\
+Powerful lifting drone that was completely build from scratch including the remote controller, stabilisation algorithm and control software.
+\Sep
+
+% You'll need these 3 lines at the end of each page!
+\clearpage
+\framebreak
+\framebreak
+
+
+\CVSection{Work achievements}
+\CVItem{Volvo Group}
+
+\SmallSep
+\textbf{Verification platform:} Redesigned how Bitbucket events trigger Jenkins jobs, and how the CI-CD chain is build-up. Kafka was used as message queue between several created Dockerized micro services written in Python that were spread out over the Volvo network. I designed the system from a conceptional idea to a production ready implementation. The project is used by the verification department of the Connectivity Group.
+\SmallSep
+
+\textbf{DevOps Engineer:} Created and maintained several CI-CD freestyle Jenkins jobs (Python) as part of the CI team responsible for the telematics gateway.
+\SmallSep
+
+\textbf{Data logging system:} Prototyped and developed (C++) a data logging system for autonomous and concept vehicles. Including hardware selection, embedded software, design of an on- and offboard QUI, data storage, as well as remote controlling of the logging unit. 
+\SmallSep
+
+\textbf{Scrum master:} Scrum master on the agile release train that created the first commercial autonomous transportation solution.
+\SmallSep
+
+\textbf{Communication infrastructure to enable autonomous driving:} Investigating the requirements, selection of Hardware and technologies, as well as on-site measurements. Later on I became the element owner of the wireless communication infrastructure at the project's customer.  
+\SmallSep
+
+\textbf{Research projects:} Software Developer (C++) on public funded research projects with a focus on C-ITS. \\
+\SmallSep
+
+\CVItem{Master thesis} \\
+\textbf{Learning wireless channels models to design real-time communications:} Co-authored a research paper based on the results of my master thesis. The Paper got published in IEEE Transactions on Vehicular Technology \\
+\SmallSep
+
+\CVItem{Memory x design} \\
+Prototyped the next phase of the customers product road-map.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
