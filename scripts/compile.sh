@@ -1,7 +1,8 @@
 #!/bin/sh
 
-#./scripts/toolchain.sh pdflatex main.tex
-./scripts/toolchain.sh latexmk -cd -f -interaction=batchmode -pdf main.tex
+./scripts/toolchain.sh latexmk -cd -f -interaction=batchmode -pdf cv.tex
 
-#rm main.aux
-#rm main.log
+rm cv.fdb_latexmk
+rm cv.fls
+rm cv.aux
+rm cv.log
