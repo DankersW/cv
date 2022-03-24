@@ -7,7 +7,7 @@ on:
     #  - '*.*.*'
 
 jobs:
-  compile:
+  compile-latex:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout commit"
@@ -19,11 +19,8 @@ jobs:
       - name: "Compile Latex documents"
         run: ./scripts/compile.sh
 
-  publish:
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Checkout commit"
-        uses: actions/checkout@v2
-      
-      - name: "publish"
-        run: ls -al
+      - name: "Publish docs"
+        uses: actions/upload-artifact@v3
+          with:
+            name: wouter_dankers_cv.pdf
+            path: cv.pdf
