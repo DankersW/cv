@@ -21,6 +21,6 @@ jobs:
 
       - name: "Publish docs"
         uses: actions/upload-artifact@v3
-          with:
-            name: wouter_dankers_cv.pdf
-            path: cv.pdf
+        with:
+          name: wouter_dankers_cv.pdf
+          path: cv.pdf
