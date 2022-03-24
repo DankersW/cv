@@ -1,0 +1,21 @@
+name: build_docker
+
+#on:
+#  push:
+    #branches: [main]
+    #tags:
+    #  - '*.*.*'
+
+jobs:
+  compile:
+    runs-on: blang/latex:ubuntu
+    steps:
+      - name: "Checkout commit"
+        uses: actions/checkout@v2
+      
+      - name: "Compile Latex documents"
+        run: |
+          ls
+          pwd
+          latexmk -cd -f -interaction=batchmode -pdf src/cv.tex
+          ls
