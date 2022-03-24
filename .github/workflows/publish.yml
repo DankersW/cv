@@ -8,14 +8,15 @@ on:
 
 jobs:
   compile:
-    runs-on: blang/latex:ubuntu
+    runs-on: ubuntu-latest
     steps:
       - name: "Checkout commit"
         uses: actions/checkout@v2
       
       - name: "Compile Latex documents"
         run: |
+          
           ls
           pwd
-          latexmk -cd -f -interaction=batchmode -pdf src/cv.tex
+          ./scripts/compile.sh
           ls
