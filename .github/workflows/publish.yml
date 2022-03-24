@@ -13,10 +13,17 @@ jobs:
       - name: "Checkout commit"
         uses: actions/checkout@v2
       
+      - name: "Pull Latex toolchain docker"
+        run: docker pull blang/latex:ubuntu
+      
       - name: "Compile Latex documents"
-        run: |
-          
-          ls
-          pwd
-          ./scripts/compile.sh
-          ls
+        run: ./scripts/compile.sh
+        
+  publish:
+    runs-on:
+    steps:
+      - name: "Checkout commit"
+        uses: actions/checkout@v2
+      
+      - name: "publish"
+        run: ls -al
