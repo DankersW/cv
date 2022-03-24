@@ -18,9 +18,9 @@ jobs:
       
       - name: "Compile Latex documents"
         run: ./scripts/compile.sh
-        
+
   publish:
-    runs-on:
+    runs-on: ubuntu-latest
     steps:
       - name: "Checkout commit"
         uses: actions/checkout@v2
