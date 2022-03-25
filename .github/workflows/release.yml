@@ -26,7 +26,7 @@ jobs:
           path: build/
 
       - name: "zipping"
-        run: zip wouter_dankers build/
+        run: zip --junk-path abc build/wouter_dankers_cv.pdf build/wouter_dankers_portfolio.pdf
       
       - name: Create Release
         id: create_release
