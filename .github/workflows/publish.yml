@@ -1,8 +1,8 @@
 name: publish
 
 on:
-  push
-    branches: [main]
+  push #:
+    #branches: [main]
     #tags:
     #  - '*.*.*'
 
@@ -24,5 +24,12 @@ jobs:
         with:
           name: wouter_dankers.zip
           path: build/
+
+      - name: Upload to release
+        uses: JasonEtco/upload-to-release@master
+        with:
+          args: my-image.tar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
