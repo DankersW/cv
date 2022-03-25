@@ -1,0 +1,26 @@
+name: publish
+
+on:
+  push:
+    branches: [main]
+    tags:
+      - '*.*.*'
+
+jobs:
+  compile-latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout commit"
+        uses: actions/checkout@v2
+      
+      - name: "Pull Latex toolchain docker"
+        run: docker pull blang/latex:ubuntu
+      
+      - name: "Compile Latex documents"
+        run: ./scripts/compile.sh
+
+      - name: "Publish CV"
+        uses: actions/upload-artifact@v3
+        with:
+          name: wouter_dankers.zip
+          path: build/
