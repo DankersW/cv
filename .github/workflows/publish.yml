@@ -1,8 +1,8 @@
-name: build_docker
+name: publish
 
 on:
   push
-    #branches: [main]
+    branches: [main]
     #tags:
     #  - '*.*.*'
 
@@ -22,5 +22,7 @@ jobs:
       - name: "Publish CV"
         uses: actions/upload-artifact@v3
         with:
-          name: wouter_dankers
+          name: wouter_dankers.zip
           path: build/
+
+
