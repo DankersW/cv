@@ -16,9 +16,28 @@ jobs:
       - name: "Compile Latex documents"
         run: ./scripts/compile.sh
 
-      - name: "Upload to release"
+      - uses: papeloto/action-zip@v1
+        with:
+          files: build/
+          dest: wouter_dankers.zip
+
+      - name: "Upload CV to release"
         uses: JasonEtco/upload-to-release@master
         with:
           args: build/wouter_dankers_cv.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: "Upload Portfolio to release"
+        uses: JasonEtco/upload-to-release@master
+        with:
+          args: build/wouter_dankers_cv.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "Upload to release"
+        uses: JasonEtco/upload-to-release@master
+        with:
+          args: wouter_dankers.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

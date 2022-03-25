@@ -1,10 +1,10 @@
 name: publish
 
 on:
-  push #:
-    #branches: [main]
-    #tags:
-    #  - '*.*.*'
+  push:
+    branches: [main]
+    tags:
+      - '*.*.*'
 
 jobs:
   compile-latex:
@@ -24,12 +24,3 @@ jobs:
         with:
           name: wouter_dankers.zip
           path: build/
-
-      - name: Upload to release
-        uses: JasonEtco/upload-to-release@master
-        with:
-          args: my-image.tar
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
