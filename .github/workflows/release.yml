@@ -1,8 +1,7 @@
 on:
-  push #:
-    # Sequence of patterns matched against refs/tags
-    #tags:
-    #- 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+  push:
+    tags:
+    - '*.*.*'
 
 name: Upload Release Asset
 
@@ -13,9 +12,22 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Build project # This would actually build your project, using zip for an example artifact
-        run: |
-          zip wouter_dankers build/
+
+      - name: "Pull Latex toolchain docker"
+        run: docker pull blang/latex:ubuntu
+      
+      - name: "Compile Latex documents"
+        run: ./scripts/compile.sh  
+
+      - name: "Publish CV"
+        uses: actions/upload-artifact@v3
+        with:
+          name: wouter_dankers.zip
+          path: build/
+
+      - name: "zipping"
+        run: zip wouter_dankers build/
+      
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -23,27 +35,39 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
-      - name: Upload Release Asset
-        id: upload-release-asset 
+
+      - name: Upload Release ZIP Asset
+        id: upload-release-asset ZIP
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
           asset_path: ./wouter_dankers.zip
           asset_name: wouter_dankers.zip
           asset_content_type: application/zip
 
       - name: Upload cv Asset
-        id: upload-release-asset_2
+        id: upload-release-asset CV
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./build/wouter_dankers_cv.pdf
           asset_name: wouter_dankers_cv.pdf
+          asset_content_type: application/zip
+
+      - name: Upload portfolio Asset
+        id: upload-release-asset portfolio
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./build/wouter_dankers_portfolio.pdf
+          asset_name: wouter_dankers_portfolio.pdf
           asset_content_type: application/zip
