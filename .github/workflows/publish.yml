@@ -19,8 +19,8 @@ jobs:
       - name: "Compile Latex documents"
         run: ./scripts/compile.sh
 
-      - name: "Publish docs"
+      - name: "Publish CV"
         uses: actions/upload-artifact@v3
         with:
-          name: wouter_dankers_cv.pdf
-          path: cv.pdf
+          name: wouter_dankers
+          path: build/
