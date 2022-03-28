@@ -1,33 +1,7 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Document properties and packages
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[a4paper,12pt,final]{memoir}
 
-% misc
-\renewcommand{\familydefault}{bch}	% font
-\pagestyle{empty}					% no pagenumbering
-\setlength{\parindent}{0pt}			% no paragraph indentation
+\usepackage{src/components/header}
 
-
-% required packages (add your own)
-\usepackage{flowfram} % column layout
-\usepackage[top=1cm,left=1cm,right=1cm,bottom=1cm]{geometry}% margins
-\usepackage{graphicx}										% figures
-\usepackage{url}											% URLs
-\usepackage[usenames,dvipsnames]{xcolor}					% color
-\usepackage{multicol}										% columns env.
-	\setlength{\multicolsep}{0pt}
-\usepackage{paralist}										% compact lists
-\usepackage{tikz}
-
-\usepackage{tcolorbox}                                      % draw box
-\usepackage{calc}
-
-
-% bar drawing
-\usepackage[T1]{fontenc}
-\usepackage{tikz}
-\usepackage{xcolor}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Create column layout
@@ -61,38 +35,6 @@
 \newflowframe{0.64\textwidth}{\textheight}{\LeftMainSep}{0pt}[main01]
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% define macros (for convience)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\definecolor{white}{RGB}{255,255,255}
-\definecolor{maingray}{HTML}{B9B9B9}
-\definecolor{blueline}{HTML}{1a81c6}
-
-\newcommand{\Sep}{\vspace{1.5em}}
-\newcommand{\SmallSep}{\vspace{0.5em}}
-
-\newenvironment{AboutMe}
-	%{\ignorespaces\textbf{\color{RoyalBlue} About me}}
-	{\ignorespaces\textbf{\color{NavyBlue} About me}}
-	{\Sep\ignorespacesafterend}
-	
-\newcommand{\CVSection}[1]
-	{\Large\textbf{#1}\par
-	\SmallSep\normalsize\normalfont}
-
-\newcommand{\CVItem}[1]
-	%{\textbf{\color{RoyalBlue} #1}}
-	{\textbf{\color{NavyBlue} #1}}
-
-\newcommand\skills[1]{ 
-    \begin{tikzpicture}
-        \foreach [count=\i] \x/\y in {#1}{
-            \draw[fill=maingray,maingray] (0,\i) rectangle (5,\i+0.4);
-            \draw[fill=white,blueline](0,\i) rectangle (\y,\i+0.4);
-            \node[above right] at (0,\i+0.4) {\x};
-        }
-    \end{tikzpicture}
-}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Begin document
@@ -204,56 +146,6 @@ BSc. ICT and Telecommunication
 \CVItem{IEEE Transactions on Vehicular Technology} \hfill 2018 \\
 Co-authored the paper "Learning wireless channels models to design real-time communications". The Paper is based on the results of my master thesis. 
 \Sep
-
-
-% You'll need these 3 lines at the end of each page!
-\clearpage
-\framebreak
-\framebreak
-
-% Personal projects
-\CVSection{Hobby projects}
-\CVItem{Home automation} \\
-\emph{Topics: Google cloud platform, ESP32, IoT, Python, Monitoring} \\
-Self developed home automation kit that runs on a local server as well as in the cloud. The cloud service is mostly used for natural language processing (voice commands using Google Assistant) and an integration with the Sonos ecosystem. The home server serves as a device gateway, storage facility, and as a monitoring unit in the form of a web-server. 
-\SmallSep
-
-\CVItem{DIY drone} \\
-\emph{Topics: Robotics, Wireless communication, Python, Gyroscope} \\
-Powerful lifting drone that was completely build from scratch including the remote controller, stabilisation algorithm and control software.
-\Sep
-
-
-
-
-\CVSection{Work achievements}
-\CVItem{Volvo Group}
-
-\SmallSep
-\textbf{Verification platform:} Redesigned how Bitbucket events trigger Jenkins jobs, and how the CI-CD chain is build-up. Kafka was used as message queue between several created Dockerized micro services written in Python that were spread out over the Volvo network. I designed the system from a conceptional idea to a production ready implementation. The project is used by the verification department of the Connectivity Group.
-\SmallSep
-
-\textbf{DevOps Engineer:} Created and maintained several CI-CD freestyle Jenkins jobs (Python) as part of the CI team responsible for the telematics gateway.
-\SmallSep
-
-\textbf{Data logging system:} Prototyped and developed (C++) a data logging system for autonomous and concept vehicles. Including hardware selection, embedded software, design of an on- and offboard QUI, data storage, as well as remote controlling of the logging unit. 
-\SmallSep
-
-\textbf{Scrum master:} Scrum master on the agile release train that created the first commercial autonomous transportation solution.
-\SmallSep
-
-\textbf{Communication infrastructure to enable autonomous driving:} Investigating the requirements, selection of Hardware and technologies, as well as on-site measurements. Later on I became the element owner of the wireless communication infrastructure at the project's customer.  
-\SmallSep
-
-\textbf{Research projects:} Software Developer (C++) on public funded research projects with a focus on C-ITS. \\
-\SmallSep
-
-\CVItem{Master thesis} \\
-\textbf{Learning wireless channels models to design real-time communications:} Co-authored a research paper based on the results of my master thesis. The Paper got published in IEEE Transactions on Vehicular Technology \\
-\SmallSep
-
-\CVItem{Memory x design} \\
-Prototyped the next phase of the customers product road-map.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

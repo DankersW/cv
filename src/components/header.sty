@@ -1,30 +1,57 @@
-\usepackage{geometry}
-\usepackage{indentfirst}
-\usepackage{enumitem}
+% misc
+\renewcommand{\familydefault}{bch}	% font
+\pagestyle{empty}					% no pagenumbering
+\setlength{\parindent}{0pt}			% no paragraph indentation
+
+
+% required packages
+\usepackage{flowfram} % column layout
+\usepackage[top=1cm,left=1cm,right=1cm,bottom=1cm]{geometry}% margins
+\usepackage{graphicx}										% figures
+\usepackage{url}											% URLs
+\usepackage[usenames,dvipsnames]{xcolor}					% color
+\usepackage{multicol}										% columns env.
+	\setlength{\multicolsep}{0pt}
+\usepackage{paralist}										% compact lists
+\usepackage{tikz}
+
+\usepackage{tcolorbox}                                      % draw box
+\usepackage{calc}
+
+\usepackage[T1]{fontenc}									% bar drawing
+\usepackage{tikz}
 \usepackage{xcolor}
-\usepackage{hyperref}
-\usepackage{fontspec}
-\usepackage{fontawesome}
-\usepackage{bbding}
-\usepackage{import}
-\usepackage{emoji}
-\usepackage{fontawesome}
-\usepackage{xcolor}
 
-\setemojifont{TwemojiMozilla}
 
-\pagestyle{empty}
-\geometry{margin=0.5in}
-\setlength\parindent{9pt}
-\setlist{nosep}
-\renewcommand\labelitemi{--}
+% colours
+\definecolor{white}{RGB}{255,255,255}
+\definecolor{maingray}{HTML}{B9B9B9}
+\definecolor{blueline}{HTML}{1a81c6}
 
-\definecolor{highlight}{RGB}{0,0,0}
 
-\newcommand{\github}{\textcolor{rgb:red,110;green,84;blue,148}{\faGithubSquare}}
-\newcommand{\linkedin}{\textcolor{rgb:red,6;green,108;blue,170}{\faLinkedinSquare}}
-\newcommand{\name}[1]{\begin{center}\section*{\LARGE \color{highlight} #1}\vspace{-0.8cm}\end{center}}
-\newcommand{\topinfo}[1]{\begin{center}\vspace{-0.1cm}#1\vspace{-0.3cm}\end{center}}
-\newcommand{\resumesection}[1]{\vspace{-0.5cm}\section*{\color{highlight}#1}\vspace{-0.2cm}\hrule\vspace{0.2cm}}
+% marcos
+\newcommand{\Sep}{\vspace{1.5em}}
+\newcommand{\SmallSep}{\vspace{0.5em}}
 
-\renewcommand{\familydefault}{\sfdefault}
+\newenvironment{AboutMe}
+	%{\ignorespaces\textbf{\color{RoyalBlue} About me}}
+	{\ignorespaces\textbf{\color{NavyBlue} About me}}
+	{\Sep\ignorespacesafterend}
+	
+\newcommand{\CVSection}[1]
+	{\Large\textbf{#1}\par
+	\SmallSep\normalsize\normalfont}
+
+\newcommand{\CVItem}[1]
+	%{\textbf{\color{RoyalBlue} #1}}
+	{\textbf{\color{NavyBlue} #1}}
+
+\newcommand\skills[1]{ 
+    \begin{tikzpicture}
+        \foreach [count=\i] \x/\y in {#1}{
+            \draw[fill=maingray,maingray] (0,\i) rectangle (5,\i+0.4);
+            \draw[fill=white,blueline](0,\i) rectangle (\y,\i+0.4);
+            \node[above right] at (0,\i+0.4) {\x};
+        }
+    \end{tikzpicture}
+}
