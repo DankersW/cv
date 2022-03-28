@@ -11,3 +11,9 @@ for src_file in "cv" "portfolio"; do
         rm $src_file.$extension
     done
 done
+
+for file in "hobby_projects" "profesional_projects"; do
+    for extension in "tex.aux" "aux"; do
+        rm $file.$extension
+    done
+done
