@@ -14,6 +14,6 @@ done
 
 for file in "hobby_projects" "profesional_projects"; do
     for extension in "tex.aux" "aux"; do
-        rm $file.$extension
+        rm src/components/$file.$extension
     done
 done
