@@ -1,6 +1,6 @@
 \documentclass[a4paper,12pt,final]{memoir}
 
-\usepackage{src/components/header}
+\usepackage{src/components/common}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -24,7 +24,7 @@
 \hfill
 \tikz{%
 	%\draw[loosely dotted,color=RoyalBlue,line width=1.5pt,yshift=0]
-	\draw[color=RoyalBlue,line width=1.5pt,yshift=0]
+	\draw[color=RoyalBlue,line width=\lineTickness,yshift=0]
 	(0,0) -- (0,\textheight);}%
 \hfill\mbox{}
 \end{staticcontents}
@@ -56,6 +56,7 @@
 	G\"oteborg, Sweden \\
 	+46 (0)720 130 370 \\
 	\url{wouter.dankers@skynet.be}  \\
+	\url{dankersw.github.io} \\
 	\url{github.com/DankersW} \\
 	\Sep
 	
@@ -64,14 +65,14 @@
 	\skills{{Dutch/5}} \\
     \skills{{English/5}} \\
     \skills{{French/1}} \\
-    \skills{{Swedish/2.5}} \\
+    \skills{{Swedish/3}} \\
 	\Sep
 	\Sep
 	
 	% Interests
     {\Large\textbf{Interests}}\\
 	\SmallSep
-    \framebox(65,15){Outdoor life} \framebox(57,15){Ice-hockey} \framebox(75,15){Skateboarding} \framebox(40,15){Surfing} \framebox(40,15){Cycling} \framebox(35,15){Skiing} \framebox(25,15){IoT} \framebox(60,15){Automation} \framebox(35,15){Nature} \framebox(45,15){Robotics} \framebox(60,15){Smart-cities} \\
+    \framebox(65,15){Outdoor life} \framebox(57,15){Ice-hockey} \framebox(75,15){Skateboarding} \framebox(40,15){Surfing} \framebox(40,15){Cycling} \framebox(35,15){Skiing} \framebox(25,15){IoT} \framebox(60,15){Automation} \framebox(35,15){Nature} \framebox(45,15){Robotics} \framebox(60,15){Smart-cities} \framebox(70,15){Sustainability} \\
     \Sep
 
     
@@ -106,6 +107,8 @@ I am an experienced and versatile software engineer that takes great pride in wr
 \Sep
 
 \CVSection{Tech stack}
+
+	
 \begin{multicols}{3}
 \begin{compactitem}[\color{RoyalBlue}$\circ$]
 	\item Go
@@ -114,21 +117,23 @@ I am an experienced and versatile software engineer that takes great pride in wr
 	\item RTOS (Zephyr) 
 	\item Bash
 	\item C-ITS
+	\item Embedded-Systems
 	\item Networking
 	\item Git
-	\item Embedded-Systems
-	\item Cloud (GCP, AWS, Azure)
 	\item Agile 
 	\item Docker
 	\item Automation
 	\item IoT
+	\item Cloud(GCP, AWS, Azure)
 	\item Linux
 	\item Micro-services
-	\item Wireless communication
-	\item BLE, Thread, WiFi, Mesh
+	\item Wireless
+	\item BLE,Thread,WiFi,Mesh
 	\item CI/CD
+	\item Databases
 \end{compactitem}
 \end{multicols}
+
 \Sep
 
 % Education
@@ -143,10 +148,13 @@ BSc. ICT and Telecommunication
 
 % Publications
 \CVSection{Publications}
-\CVItem{IEEE Transactions on Vehicular Technology} \hfill 2018 \\
-Co-authored the paper "Learning wireless channels models to design real-time communications". The Paper is based on the results of my master thesis. 
-\Sep
+\CVItem{Characterizing Packet Losses in Vehicular Networks} \hfill 2019 \\
+Published in \emph{IEEE Transactions on Vehicular Technology}. The Paper is based on the results of my master thesis.
+\SmallSep
 
+\CVItem{Modeling Packet Losses in Communication Networks} \hfill 2018 \\
+Published in \emph{IEEE International Symposium on Information Theory (ISIT)}.
+\Sep
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % End document

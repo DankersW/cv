@@ -6,7 +6,7 @@ List of project, to be used for auto generating LaTex files.
 
 ## Vinnter
 
-### Weldings-ystem Gateway
+### Weldings-system Gateway
 Title: Gateway for different welding machines
 For: Esab, contractor via Vinnter AB
 Technology: Micro-services, Go, Python, C++, gRPC

@@ -21,17 +21,30 @@
 \usepackage[T1]{fontenc}									% bar drawing
 \usepackage{tikz}
 \usepackage{xcolor}
+\usepackage{fontawesome}
+\usepackage{hyperref}
+\usepackage{xparse}% http://ctan.org/pkg/xparse
 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=RoyalBlue,      
+    urlcolor=black,
+    }
 
 % colours
 \definecolor{white}{RGB}{255,255,255}
 \definecolor{maingray}{HTML}{B9B9B9}
 \definecolor{blueline}{HTML}{1a81c6}
 
+% Variables
+\newcommand{\lineTickness}{1.5pt}
+
 
 % marcos
 \newcommand{\Sep}{\vspace{1.5em}}
 \newcommand{\SmallSep}{\vspace{0.5em}}
+\newcommand{\VerySmallSep}{\vspace{0.25em}}
 
 \newenvironment{AboutMe}
 	%{\ignorespaces\textbf{\color{RoyalBlue} About me}}
