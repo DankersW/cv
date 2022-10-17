@@ -1,8 +1,12 @@
 \CVSection{Work portfolio}
 
-\CVItem{Vinnter} \\
+\CVItem{Vinnter}
+
 \SmallSep
-\textbf{Custom Debian based OS image:} In-house project that started 15 years earlier and wasn't touched for 10 years. As part of the new facelift, I worked on compiling the legacy code (C++) for new hardware, moved the build infrastructure (handfull of huge shell scripts) from a dying laptop into the cloud, integrated into a CI, packaged all services into debian packages from the CI, setup service management (systemd), and created a custom Debian OS image. All done via Gitlab CI pipelines.
+\textbf{LTE cloud connector firmware application:} Build and designed a cloud connector application running on 300 devices as part of trail project. I handled both the embedded firmware as well as the cloud configuration. On the cloud side (AWS) I wrote a custom fleet-provisioning service stack using CDK (Python) to safely and automatically onboard the devices into AWS as well as some custom serverless functions to handle device communication, firmware updates, and device management. On the device side, I was writing firmware for the NRF9160 SiP using the Zephyr RTOS (C). The application handled cloud communication using LTE-M, Firmware over the air (FOTA) upgrades, and certificate rotation. One of the hardest parts was battery management because the radio had to be on all the time and the system was running on batteries. I also architected the system design for the other parts that interact with sensors and mechanical components.  
+\SmallSep
+
+\textbf{Custom Debian based OS image:} In-house project that started 15 years earlier and wasn't touched for 10 years. As part of the new facelift, I worked on compiling the legacy code (C++) for new hardware, moved the build infrastructure (handful of huge shell scripts) from a dying laptop into the cloud, integrated into a CI, packaged all services into debian packages from the CI, setup service management (systemd), and created a custom Debian OS image. All done via Gitlab CI pipelines.
 \SmallSep
 
 \textbf{Welding system IoT Gateway:} Consultant at Esab. Maintaining and developing Linux based gateway application with a microservices architecture running on a Single-board computer, the micro-services communicate using gRPC. Languages of the services ranged from Go, C++, Python, and JS (Vue). The gateway is part of a bigger system and communicates with other nodes in the system via HTTP. I created and maintained serval applications and services, all the services I created were written in Go. Our architecture supported different (gateway) platforms/hardware as well as different welding systems and configurations.
