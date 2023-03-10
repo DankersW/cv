@@ -4,19 +4,18 @@ Repository to keep my CV and Portfolio documents up-to-date. The documents are w
 
 The lastest ```CV``` and ```Portfolio``` can be download from the [release page](https://github.com/DankersW/cv/releases/)
 
+## Building
+
+Toolchain using docker for compiling ```LaTex``` documents into ```pdf files```
+
+```sh
+make build
+```
+
 ## Release
 
 To create a release and trigger the release pipeline one only needs to create a tag and push it upstream.
 
 ```sh
-git tag x.x.x 
-git push origin x.x.x
-```
-
-## Dev toolchain
-
-Toolchain using docker for compiling ```LaTex``` documents into ```pdf files```
-
-```sh
-./scripts/compile.sh
+make release tag=X.X.X
 ```
