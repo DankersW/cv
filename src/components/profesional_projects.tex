@@ -1,60 +1,105 @@
 \CVSection{Work portfolio}
 
+\CVItem{Ondosis}
+
+\SmallSep
+\textbf{LLM Agent for Device Test Analysis:} \textit{OnDosis Digital} \\
+Designed and implemented a custom LLM-based agent to support the analytical team in interpreting device test results. The system runs in a Docker Compose environment and integrates with a local LLM model (via Ollama), enhancing queries with system-specific context. Test data is automatically collected by a separate tool I built, stored in the cloud, and made accessible for automated analysis. \\
+\textit{Tech: Go, Docker, LLM} \\
+\SmallSep
+
+\textbf{Automatic Dispensing Application:} \textit{OnDosis Analytical Testing} \\
+Developed a desktop application for executing device dispensing tests with customizable settings in a controlled and repeatable manner. Originally built for the internal test lab, the application became so effective that customers adopted it as well. The tool provides a GUI, configures and triggers tests over BLE, collects more than 100 datapoints per run, and integrates with precision balances for accurate weight measurements. Data is exported in Excel formats preferred by the test teams and supports remote logging and data collection. The impact was significant: internal tests that previously took one week could now be performed in parallel within about one hour, and customer test teams reduced their operator requirements tenfold — from 100 operators down to 10. \\
+\textit{Tech: Go, Docker, GUI, BLE} \\
+\SmallSep
+
+\textbf{Internal Software Tooling:} \textit{OnDosis Business} \\
+Designed, developed, and maintained internal tools supporting manufacturing, testing, and validation processes across the company. Examples include device label printing, internal device manufacturing tools, testing rigs, flashing rigs, aftermarket tooling, and validation software. These solutions standardized workflows, improved efficiency, and reduced manual overhead. \\
+\textit{Tech: Go, Docker} \\
+\SmallSep
+
+\textbf{Customer-Facing CLI Tools:} \textit{OnDosis Digital} \\
+Created and maintained CLI applications enabling customers and partners to securely interact with OnDosis’s cloud platform. These tools were used in manufacturing workflows for both devices and drug-related components, ensuring integration with customer production environments while reducing complexity for external teams. \\
+\textit{Tech: Go, Docker} \\
+\SmallSep
+
+\textbf{IoT Cloud Platform for Medication Dispenser:} \textit{OnDosis Digital} \\
+Maintained and extended a serverless IoT platform developed for connected medication dispensers. As part of the IoT team, I was responsible for secure device onboarding, storage of large volumes of device data, factory flashing processes, and integrations with third-party production facilities. The solution leveraged AWS’s serverless ecosystem, with infrastructure defined as IaC using AWS CDK (Python) and serverless functions implemented in Go. My work ensured the platform’s reliability, scalability, and compliance within a medical device context. \\
+\textit{Tech: Serverless, IaC, Go, Python, AWS, Cryptography} \\
+\SmallSep
+
+
 \CVItem{Vinnter}
 
 \SmallSep
-\textbf{Serverless IoT platform:} \textit{Consultant at Ondosis} \newline
-Part of the IoT team responsible for onboarding devices, storing huge amounts of device data, factory flashing process, and integration with 3th party
-production facilities. \newline
-Our services leveraged the serverless eco-system of AWS. The stacks and infrastructure were written as IaC (Infrastructure as Code) using AWS CDK (Python)
-all serverless functions were written in Golang.
+\textbf{IoT Cloud Platform for Medication Dispenser:} \textit{OnDosis (contractor via Vinnter AB)} \\
+Designed and built a serverless IoT cloud platform from idea to market. The platform handled secure onboarding of devices, storage of large-scale device data, factory flashing, and integration with third-party production facilities (both device assembly and Class A drug filling lines). Built on AWS’s serverless ecosystem, the infrastructure was managed with AWS CDK (Python), while backend functions were implemented in Go. The system emphasized security, scalability, and compliance, with an automated end-to-end testing suite running hourly to validate system performance and reliability. \\
+\textit{Tech: Serverless, IaC, Go, Python, AWS, Cryptography} \\
 \SmallSep
 
-\SmallSep
-\textbf{LTE cloud connector firmware application:} 
-Build and designed a cloud connector application running on 300 devices as part of trail project. 
-I handled both the embedded firmware as well as the cloud services. 
-On the cloud side (AWS) I wrote a custom fleet-provisioning service using IaC (infrastructure as code) to safely and automatically 
-onboard wireless devices into AWS as well as some custom serverless functions to handle device communication, firmware updates, and device management.
-\newline On the device side, I wrote firmware for the NRF9160 SiP using the Zephyr RTOS (C). The application handled cloud communication using 
-LTE-M, Firmware over the air (FOTA) upgrades, and certificate rotation. 
-The challenging parts was battery management, due to the always on radio requirement as well as running on batteries. 
-I also architected the system design for the other parts of the firmware that interact with sensors and mechanical components, the implementation of this part was done by someone else.  
+\textbf{LTE Cloud Connector Firmware Application:} \textit{Vinnter AB (in-house project)} \\
+Designed and developed a cloud connector application deployed on 300 devices as part of a trial project. On the cloud side, built a custom fleet-provisioning service in AWS using Infrastructure as Code (IaC) to securely and automatically onboard devices, alongside serverless functions for communication, firmware updates, and device management. On the device side, implemented firmware for the nRF9160 SiP using Zephyr RTOS (C), supporting LTE-M connectivity, FOTA upgrades, and certificate rotation. The system posed unique challenges in battery management due to always-on radio requirements while running on battery power. Additionally, I architected the firmware system design for sensor and mechanical integration, with implementation completed by other team members. \\
+\textit{Tech: nRF9160 SiP, Zephyr RTOS (C), AWS, Go, IaC, Serverless} \\
 \SmallSep
 
-\textbf{Custom Debian based OS image:} In-house project that started 15 years earlier and wasn't touched for 10 years. As part of the new facelift, I worked on compiling the legacy code (C++) for new hardware, moved the build infrastructure (handful of huge shell scripts) from a dying laptop into the cloud run CI pipeline, packaged all services into debian packages from the CI, setup service management (systemd), and created a custom Debian OS image. All done via Gitlab CI pipelines.
+\textbf{Custom Debian-Based OS Image:} \textit{Vinnter AB (in-house project)} \\
+Revitalized an in-house project that had been dormant for over a decade. Compiled legacy C++ code for new hardware and migrated the fragile build environment (previously a set of large shell scripts on an old laptop) into a modern CI/CD pipeline running in the cloud. Automated packaging of services into Debian packages, integrated service management with systemd, and created a custom Debian-based OS image. The entire process was automated and reproducible via GitLab CI pipelines. \\
+\textit{Tech: Debian, C++, Systemd, GitLab CI} \\
 \SmallSep
 
-\textbf{Welding system IoT Gateway:} \textit{Consultant at Esab} \newline
-Maintaining and developing Linux based gateway application with a microservices architecture running on a Single-board computer, the micro-services communicate using gRPC. Languages of the services ranged from Go, C++, Python, and JS (Vue). The gateway is part of a bigger system and communicates with other nodes in the system via HTTP. I created and maintained serval applications and services, all the services I created were written in Go. Our architecture supported different (gateway) platforms/hardware as well as different welding systems and configurations.
-\SmallSep 
-
-\textbf{Radar presence detection:} Small PoC project to verify if a radar system could be used to track the usage of a welding booth. The radar system and detection algorithms were provided by a supplier. My task included creating webhooks for our clouds to communicate as well as a monitoring tool to visualize the received data. 
+\textbf{Welding-System IoT Gateway:} \textit{Esab (contractor via Vinnter AB)} \\
+Developed and maintained a Linux-based gateway application with a microservices architecture running on single-board computers. Services, primarily written in Go, communicated internally via gRPC and externally via HTTP with other system nodes. The gateway supported multiple hardware platforms and welding system configurations. I created and maintained several applications and services, ensuring modularity, scalability, and interoperability within a larger distributed welding ecosystem. \\
+\textit{Tech: Microservices, Go, Python, C++, JavaScript (Vue), gRPC} \\
 \SmallSep
 
-\textbf{BLE Sensor network firmware development:} Worked on an in-house project where we build a wireless thermostat system for floor heating. The product was FULLY developed In-house ranging from electronics and plastics to software. I joined the project at a later stage. My main contributions to the project were that I developed a HIL and SIL (Hardware and Software in the Loop) system to run big system tests on multiple targets (communicating wirelessly with each other) as well as performance tests on single targets. Some custom hardware was also developed to achieve this goal. The tests were automatically triggered via CI/CD pipelines. \\ 
-\Sep
-
-\CVItem{Volvo Group}
-
-\SmallSep
-\textbf{Verification platform:} Redesigned how Bitbucket events trigger Jenkins jobs, and how the CI-CD chain is build-up. Kafka was used as message queue between several created Dockerized micro services written in Python that were spread out over the Volvo network. I designed the system from a conceptional idea to a production ready implementation. The project is used by the verification department of the Connectivity Group.
+\textbf{Radar Presence Detection (PoC):} \textit{Esab (contractor via Vinnter AB)} \\
+Delivered a proof-of-concept project to verify whether radar technology could be used to track welding booth usage and detect presence or falls. Supplier-provided radar hardware and algorithms were integrated into our cloud platform via custom webhooks. I developed a monitoring and visualization tool to display the data in real time, enabling evaluation of the solution’s feasibility. \\
+\textit{Tech: AWS, Python, Data Visualization, REST} \\
 \SmallSep
 
-\textbf{DevOps Engineer:} Created and maintained several CI-CD freestyle Jenkins jobs (Python) as part of the CI team responsible for the telematics gateway.
+\textbf{BLE Wireless Thermostat System:} \textit{Vinnter AB (in-house project)} \\
+Contributed to an in-house wireless thermostat system for floor heating, developed entirely at Vinnter (electronics, plastics, and software). Joined during later development stages, where I built Hardware-in-the-Loop (HIL) and Software-in-the-Loop (SIL) systems for large-scale testing across multiple wireless targets as well as performance benchmarking on single devices. Developed custom hardware to support automated testing and integrated everything into CI/CD pipelines for continuous validation. \\
+\textit{Tech: BLE, Wireless, HIL, C, Embedded, nRF52840, Python, CI/CD} \\
 \SmallSep
 
-\textbf{Data logging system:} Prototyped and developed (C++) a data logging system for autonomous and concept vehicles. Including hardware selection, embedded software, design of an on- and offboard QUI, data storage, as well as remote controlling of the logging unit. 
+
+\CVItem{Volvo}
+
+\SmallSep
+\textbf{Verification Platform:} \textit{Connectivity Department, Volvo Group} \\
+Designed and implemented a verification platform to improve how Bitbucket events triggered Jenkins jobs and how CI/CD chains were structured. The platform used Kafka as a message broker between multiple Dockerized Python microservices deployed across the Volvo network and managed via Docker Swarm. The system was designed from concept to production and now operates continuously, supporting 24/7 workflows. \\
+\textit{Tech: Kafka, RPC, Python, Microservices, Docker, CI/CD} \\
 \SmallSep
 
-\textbf{Scrum master:} Scrum master on the agile release train that created the first commercial autonomous transportation solution.
+\textbf{DevOps Engineer:} \textit{Connectivity Department, Volvo Group} \\
+Created and maintained CI/CD pipelines and freestyle Jenkins jobs written in Python as part of the CI team responsible for the telematics gateway. Contributed as a dedicated DevOps resource, ensuring reliable delivery and automation across the department. \\
+\textit{Tech: Jenkins, Python, Docker} \\
 \SmallSep
 
-\textbf{Communication infrastructure to enable autonomous driving:} Investigating the requirements, selection of Hardware and technologies, as well as on-site measurements. Later on I became the element owner of the wireless communication infrastructure at the project's customer.  
+\textbf{Data Logging System for Autonomous Vehicles:} \textit{Autonomous Vehicles, Volvo Group} \\
+Prototyped and developed a C++ data logging system for autonomous and concept vehicles. Responsibilities included hardware selection, embedded software design, onboard and offboard GUIs, data storage, and remote control capabilities. Delivered a working prototype supporting field testing of autonomous systems. \\
+\textit{Tech: Embedded Linux, C++, Yocto, QT, Logging} \\
 \SmallSep
 
-\textbf{Research projects:} Software Developer (C++) on public funded research projects with a focus on C-ITS. \\
-\Sep
+\textbf{Scrum Master \& Developer:} \textit{Autonomous Vehicles, Volvo Group} \\
+Served as both Scrum Master and developer in a cross-functional team of four. Contributed to the Agile Release Train that delivered Volvo’s first commercial autonomous transportation solution. Responsibilities included facilitating Scrum practices while actively contributing to development. \\
+\textit{Tech: Agile, Scrum, SAFe} \\
+\SmallSep
+
+\textbf{Communication Infrastructure for Autonomous Driving:} \textit{Autonomous Vehicles, Volvo Group} \\
+Investigated requirements, selected hardware and technologies, and performed on-site measurements for wireless communication infrastructure supporting autonomous driving. Later became element owner of the wireless communication infrastructure at the project site, overseeing its deployment and operation. \\
+\textit{Tech: Wireless Communication, Infrastructure Design} \\
+\SmallSep
+
+\textbf{Research Projects in C-ITS and Smart Cities:} \textit{Connectivity Department, Volvo Group} \\
+Contributed as a software developer to multiple public-funded research projects, focusing on Cooperative Intelligent Transport Systems (C-ITS) and Smart City applications. Responsibilities included prototyping, simulation, and integration of communication technologies into research platforms. \\
+\textit{Tech: C-ITS, Smart Cities, C++} \\
+\SmallSep
+
+\textbf{Master Thesis: Cooperative Intelligent Transport Systems:} \textit{Connectivity Department, Volvo Group} \\
+Conducted my master thesis within the Connectivity Department, Volvo Group, working on public-funded research projects in C-ITS and Smart Cities. Explored communication technologies and their potential applications, contributing both theoretical analysis and software prototypes. \\
+\textit{Tech: C-ITS, Smart Cities, C++} \\
+\SmallSep
 
 \CVItem{Memory x design} \\
 Prototyped the next phase of the customers product road-map.
