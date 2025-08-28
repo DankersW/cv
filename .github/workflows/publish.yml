@@ -1,24 +1,33 @@
 name: publish
-
 on:
   push:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   compile-latex:
     runs-on: ubuntu-latest
     steps:
-      - name: "Checkout commit"
-        uses: actions/checkout@v2
-      
-      - name: "Pull Latex toolchain docker"
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Pull LaTeX toolchain
         run: docker pull blang/latex:ubuntu
-      
-      - name: "Compile Latex documents"
+
+      - name: Compile LaTeX
         run: ./scripts/compile.sh
 
-      - name: "Publish CV"
-        uses: actions/upload-artifact@v3
+      - name: Package outputs
+        run: |
+          mkdir -p out
+          cp build/wouter_dankers_cv.pdf out/
+          cp build/wouter_dankers_portfolio.pdf out/
+          zip -j out/wouter_dankers.zip out/wouter_dankers_cv.pdf out/wouter_dankers_portfolio.pdf
+
+      - name: Upload artifacts (v4)
+        uses: actions/upload-artifact@v4
         with:
-          name: wouter_dankers.zip
-          path: build/
+          name: wouter_dankers
+          path: out/
+          if-no-files-found: error
+          # set this only if you really need dotfiles:
+          # include-hidden-files: true

@@ -1,73 +1,38 @@
+name: release
 on:
   push:
     tags:
-    - '*.*.*'
-
-name: Upload Release Asset
+      - '*.*.*'
 
 jobs:
-  build:
-    name: Upload Release Asset
+  build-and-release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write   # required for creating releases
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: "Pull Latex toolchain docker"
+      - name: Pull LaTeX toolchain
         run: docker pull blang/latex:ubuntu
-      
-      - name: "Compile Latex documents"
-        run: ./scripts/compile.sh  
 
-      - name: "Publish CV"
-        uses: actions/upload-artifact@v3
-        with:
-          name: wouter_dankers.zip
-          path: build/
+      - name: Compile LaTeX
+        run: ./scripts/compile.sh
 
-      - name: "zipping"
-        run: zip --junk-path wouter_dankers build/wouter_dankers_cv.pdf build/wouter_dankers_portfolio.pdf
-      
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Prepare files
+        run: |
+          mkdir -p out
+          cp build/wouter_dankers_cv.pdf out/
+          cp build/wouter_dankers_portfolio.pdf out/
+          zip -j out/wouter_dankers.zip out/wouter_dankers_cv.pdf out/wouter_dankers_portfolio.pdf
+
+      # Creates the release for the pushed tag and uploads assets in one go
+      - name: Create GitHub Release & upload assets
+        uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          files: |
+            out/wouter_dankers.zip
+            out/wouter_dankers_cv.pdf
+            out/wouter_dankers_portfolio.pdf
           draft: false
           prerelease: false
-
-      - name: Upload Release ZIP Asset
-        id: upload-release-asset-ZIP
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./wouter_dankers.zip
-          asset_name: wouter_dankers.zip
-          asset_content_type: application/zip
-
-      - name: Upload cv Asset
-        id: upload-release-asset-CV
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./build/wouter_dankers_cv.pdf
-          asset_name: wouter_dankers_cv.pdf
-          asset_content_type: application/zip
-
-      - name: Upload portfolio Asset
-        id: upload-release-asset-portfolio
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./build/wouter_dankers_portfolio.pdf
-          asset_name: wouter_dankers_portfolio.pdf
-          asset_content_type: application/zip
